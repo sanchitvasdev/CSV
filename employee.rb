@@ -1,24 +1,24 @@
-class Employees
-	attr_reader :input_file
-	def initialize(input_file)
-		@input_file = input_file
-
+class Employee
+	attr_reader :name, :empid, :designation
+	def initialize(name, empid, designation)
+	  @name = name
+	  @empid = empid
+      @designation = designation
 	end
 
-	def generate_hash
-		arr = read_csv(input_file)
-		grouped_hash(arr)
+	def self.generate_hash(arr)
+	  employee_arr = []
+	  arr.each do |element|
+	  	employee_arr << Employee.new(element[0], element[1], element[2])
+	  end
+	  grouped_hash(employee_arr)
 	end
 
-	def grouped_hash(arr)
-	    arr.sort_by! { |row| row[2] }
-	    hash_map = arr.group_by { |row| row[2] }
-	    hash_map.each do |_designation, details|
-	      details.sort_by! { |value| value[1] }
-	    end
+	def self.grouped_hash(employee_arr)
+	  employee_arr.sort_by! { |employee| employee.designation }
+	  hash_map = employee_arr.group_by { |employee| employee.designation }
+	  hash_map.each do |_key, employee_arr|
+	    employee_arr.sort_by! { |employee| employee.empid }
+	  end
 	end
-
-	def read_csv(input_file)
-    	CSV.read(input_file, headers: true).to_a[1..-1]
-    end
 end
