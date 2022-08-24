@@ -7,11 +7,11 @@ class Employee
   end
 
   def self.generate_hash(table)
-	employee_arr = []
-	table.each do |row|
-	  employee_arr << Employee.new(row['Name'], row['EmpId'], row['Designation'])
-	end
-	grouped_hash(employee_arr)
+    employee_arr = []
+    table.each do |row|
+      employee_arr << Employee.new(row['Name'], row['EmpId'], row['Designation'])
+    end
+    grouped_hash(employee_arr)
   end
 
   def self.grouped_hash(employee_arr)
