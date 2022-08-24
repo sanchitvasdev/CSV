@@ -18,7 +18,7 @@ class Employee
     employee_arr.sort_by! { |employee| employee.designation }
     hash_map = employee_arr.group_by { |employee| employee.designation }
     hash_map.each do |_key, employee_arr|
-    employee_arr.sort_by! { |employee| employee.empid }
+      employee_arr.sort_by! { |employee| employee.empid }
     end
   end
 end
