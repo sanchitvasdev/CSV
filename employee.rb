@@ -1,8 +1,8 @@
 class Employee
   attr_reader :name, :empid, :designation
   def initialize(name, empid, designation)
-	@name = name
-	@empid = empid
+    @name = name
+    @empid = empid
     @designation = designation
   end
 
@@ -15,10 +15,10 @@ class Employee
   end
 
   def self.grouped_hash(employee_arr)
-	employee_arr.sort_by! { |employee| employee.designation }
-	hash_map = employee_arr.group_by { |employee| employee.designation }
-	hash_map.each do |_key, employee_arr|
-	  employee_arr.sort_by! { |employee| employee.empid }
-	end
+    employee_arr.sort_by! { |employee| employee.designation }
+    hash_map = employee_arr.group_by { |employee| employee.designation }
+    hash_map.each do |_key, employee_arr|
+      employee_arr.sort_by! { |employee| employee.empid }
+    end
   end
 end
