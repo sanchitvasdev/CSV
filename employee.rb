@@ -6,10 +6,10 @@ class Employee
     @designation = designation
   end
 
-  def self.generate_hash(arr)
+  def self.generate_hash(table)
 	employee_arr = []
-	arr.each do |element|
-	  employee_arr << Employee.new(element[0], element[1], element[2])
+	table.each do |row|
+	  employee_arr << Employee.new(row['Name'], row['EmpId'], row['Designation'])
 	end
 	grouped_hash(employee_arr)
   end
